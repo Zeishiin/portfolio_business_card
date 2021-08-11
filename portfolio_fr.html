@@ -1,0 +1,120 @@
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link rel="stylesheet" href="style.css">
+  <title>Portfolio</title>
+</head>
+<body>
+  <div class="full_card">
+    <div class="wrapper">
+      <div class="front_page">
+        <div class="header header_home">Hey! 👋</div>
+        <div class="content content_home"> Je suis Lucas! Un programmeur auto-didacte 💻 avec une passion pour les sciences humaines 🧠 <br> En ce moment, je suis une formation de Designer Web, et suis toujours heureux de pouvoir parler de n'importe quoi!</div>
+        <div class="case_study_button" onclick="show_case_study()">Ma dernière étude de cas</div>
+
+        <div class="image"></div>
+        <div class="flip flip_front"></div>
+      </div>
+      <div class="back_page">   
+        <div class="header header_contact">Déjà fini?</div>
+        <div class="content content_contact">Si vous avez des question, ou voulez jeter un oeil, vous pouvez utilisez ces réseaux-là! 📱</div>
+        <div class="phone_contact">
+          <div class="icon-container">
+            <div class="helper helper_top">Cliquer sur l'icône</div>
+            <div class="linkedin_frame copy">
+              <a href="https://www.linkedin.com/in/lucas-guérin-9940361b9/" target="_blank"><img src="https://pics.freeicons.io/uploads/icons/png/541526511556105711-64.png" alt="" class="icon-social linkedin"></a>
+              <span id="Linkedin">Linkedin</span>
+              
+            </div>
+            <div class="github_frame copy">
+              <a href=""><img src="https://pics.freeicons.io/uploads/icons/png/10412341841540553610-64.png" alt="" class="icon-social github"></a>
+              <span id="Github">Github</span>
+              </div>
+
+            <div class="mail_frame copy">
+              <a><img src="https://pics.freeicons.io/uploads/icons/png/5876661171530077749-64.png" alt="" class="icon-social mail"></a>
+             <span id="Email">Email</span>
+              </div>
+            <div class="helper helper_bottom">Cliquer sur le mail pour copier mon adresse</div>
+            </div>
+
+            </div>
+        <div class="flip flip_back"></div>
+      </div>
+    </div>
+    <div class="case_study">
+      <div class="separator"></div>
+      <div class="case_title">Etude de cas</div>
+      <div class="case_intro">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit voluptatibus, at suscipit? Accusantium architecto minus, libero facere itaque eveniet, placeat esse perferendis, ut voluptatem atque maiores consequatur repellendus, unde. Itaque odio illo, expedita non optio perferendis odit reprehenderit iste quibusdam, distinctio voluptatibus.</div>
+      <div class="case_content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit voluptatibus, at suscipit? Accusantium architecto minus, libero facere itaque eveniet, placeat esse perferendis, ut voluptatem atque maiores consequatur repellendus, unde. Itaque odio illo, expedita non optio perferendis odit reprehenderit iste quibusdam, distinctio voluptatibus. </div>
+    </div>
+  </div>
+
+  <div class="toggle_dark light_on" onclick="toggle_dark()"><span>Mode Sombre<span></div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+
+    function show_case_study(){
+      $(".wrapper").addClass("hide");
+      setTimeout(function(){$(".wrapper").css('display', 'none')}, 500);
+
+      setTimeout(function(){$(".case_study").css('display', 'block')}, 500);
+      setTimeout(function(){$(".case_study").addClass('active')}, 750);
+
+      setTimeout(function(){$(".case_title").css('display', 'block')}, 1000);
+      setTimeout(function(){$(".case_title").addClass('active')}, 1500);
+      
+      setTimeout(function(){$(".case_intro").css('display', 'block')}, 2000);
+      setTimeout(function(){$(".case_intro").addClass('active')}, 2500);
+
+      setTimeout(function(){$(".case_content").css('display', 'block')}, 2500);
+      setTimeout(function(){$(".case_content").addClass('active')}, 2750);
+    }
+
+    function toggle_dark(){
+      if($(".toggle_dark").hasClass("dark_on")){
+        $("html").removeClass("dark_mode");
+        $(".toggle_dark").removeClass("dark_on").addClass("light_on");
+        $(".toggle_dark span").text("Mode Sombre");
+        return false;
+      }
+      if($(".toggle_dark").hasClass("light_on")){
+        $("html").addClass("dark_mode");
+        $(".toggle_dark").removeClass("light_on").addClass("dark_on")
+        $(".toggle_dark span").text("Mode Clair");
+        return false;
+      }
+    }
+
+
+    var card = document.querySelector('.full_card');
+    var flip_front = document.querySelector('.flip_front');
+    var flip_back = document.querySelector('.flip_back');
+
+    flip_front.addEventListener('click', function() {
+      card.classList.add('is-flipped');
+    });
+    flip_back.addEventListener('click', function() {
+      card.classList.remove('is-flipped');
+    });
+
+    var email = document.querySelector('#email');
+    var email_text = "luca.guer1@gmail.com";
+    email.addEventListener('click', function(){
+      console.log("hel")
+      var $temp = $("<input>");
+      $("body").append($temp);
+      $temp.val(email_text).select();
+      document.execCommand("copy");
+      $temp.remove();
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+

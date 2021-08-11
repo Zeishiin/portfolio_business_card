@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link rel="stylesheet" href="style.css">
+  <title>Portfolio</title>
+</head>
+<body>
+
+  <div class="full_card">
+    <div class="wrapper">
+      <div class="front_page">
+        <div class="header header_home">Hey! 👋</div>
+        <div class="content content_home"> I'm Lucas! I'm a French self-taught programmer 💻 with a passion for human sciences 🧠 <br> I'm currently studying web design, and am always glad to talk about anything!</div>
+        <div class="image"></div>
+        <div class="flip flip_front"></div>
+      </div>
+      <div class="back_page">  
+        <div class="header header_contact">Let's get in touch!</div>
+        <div class="content content_contact">If you want to ask me anything, you can contact me on any of these networks. 📱</div>
+        <div class="phone_contact">
+          <div class="icon-container">
+            <div class="helper helper_top">Click the icon to open the profile</div>
+            <div class="linkedin_frame copy">
+              <a href="https://www.linkedin.com/in/lucas-guérin-9940361b9/" target="_blank"><img src="https://pics.freeicons.io/uploads/icons/png/541526511556105711-64.png" alt="" class="icon-social linkedin"></a>
+              <span id="Linkedin">Linkedin</span>
+            </div>
+            <div class="github_frame copy">
+              <a href=""><img src="https://pics.freeicons.io/uploads/icons/png/10412341841540553610-64.png" alt="" class="icon-social github"></a>
+              <span id="Github">Github</span>
+              </div>
+            <div class="mail_frame copy">
+              <a><img src="https://pics.freeicons.io/uploads/icons/png/5876661171530077749-64.png" alt="" class="icon-social mail"></a>
+             <span id="Email">Email</span>
+              </div>
+            <div class="helper helper_bottom">Click the mail to copy it</div>
+            </div>
+            </div>
+        <div class="flip flip_back"></div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+
+
+    var card = document.querySelector('.full_card');
+    var flip_front = document.querySelector('.flip_front');
+    var flip_back = document.querySelector('.flip_back');
+
+    flip_front.addEventListener('click', function() {
+      card.classList.add('is-flipped');
+    });
+    flip_back.addEventListener('click', function() {
+      card.classList.remove('is-flipped');
+    });
+
+    var email = document.querySelector('#email');
+    var email_text = "luca.guer1@gmail.com";
+    email.addEventListener('click', function(){
+      console.log("hel")
+      var $temp = $("<input>");
+      $("body").append($temp);
+      $temp.val(email_text).select();
+      document.execCommand("copy");
+      $temp.remove();
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+

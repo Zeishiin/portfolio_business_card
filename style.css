@@ -1,0 +1,920 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sanchez&display=swap');
+
+:root {
+  --page-size: 60em;
+  --white: hsl(0, 0%, 96%);
+  --whiter: hsl(0, 0%, 86%);
+  --black: hsl(0, 0%, 12%);
+  --blacker: hsl(0, 0%, 2%);
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+  scroll-behavior: smooth;
+
+  background: var(--white);
+  color: var(--black);
+
+  transition: all 500ms;
+}
+.dark_mode{
+  background: var(--black);
+  color: var(--white);
+
+  transition:  all 500ms;
+}
+.dark_mode .separator{background: var(--white);}
+.dark_mode .case_study_button{background: var(--white);color: var(--black);box-shadow: 10px 10px 26px -1px rgba(255,255,255,.2);}
+.dark_mode .case_study_button:hover{background: var(--whiter);color: var(--blacker);}
+.dark_mode .front_page{box-shadow: 1px 1px 25px 5px rgba(255,255,255,.3);}
+.dark_mode .back_page{box-shadow: 1px 1px 25px 5px rgba(255,255,255,.3);}
+.dark_mode .phone_contact{color: var(--blacker)}
+
+body {
+  font-family: 'Staatliches', cursive;
+  margin: 0;  
+}
+a {
+  color: var(--black);
+}    
+
+.toggle_dark{
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+
+  padding:  .4em .6em;
+  background: var(--black);
+  color: var(--white);
+  border-radius: 25px;
+
+  font-size: 1.4em;
+
+  cursor:  pointer;
+}
+.toggle_dark.light_on{background: var(--black);color: var(--white);}
+.toggle_dark.dark_on{background: var(--white);color: var(--black);}
+
+.wrapper {
+  position: relative;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: visible !important; 
+  width: calc(var(--page-size) * 1.5);
+  height: calc(var(--page-size) * 1); 
+  background: transparent !important;
+  box-shadow: none !important; 
+
+  transition: all 1.2s;
+  transform-style: preserve-3d;
+}
+.wrapper.hide{
+  opacity: 0;
+}
+
+.case_study_button{
+  position: absolute;
+  bottom: 5%;
+  left: 12%;
+
+  padding:  .4em .6em;
+
+  /*OPPOSITE CURRENT MODE*/
+  background: var(--black);
+  color: var(--white);
+
+  border-radius: 25px;
+  cursor: pointer;
+
+  font-size:  2em;
+  box-shadow: 10px 10px 26px -1px rgba(0,0,0,0.2);
+}
+.case_study_button:hover{background: var(--blacker);}
+
+.case_study{
+  width: 100vw;
+  height: 100vh;
+
+  display: none;
+  opacity:  0;
+
+  transition: all 1500ms ease;}
+.case_study.active{opacity: 1;}
+
+.separator{
+  position: fixed;
+
+  height: 86%;
+  width: 2px;
+
+  padding-top: 1%;
+  padding-bottom: 1%;
+
+  top: 5%;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  background: var(--black);
+}
+
+.case_title{
+  font-size: 4em;
+  padding-left: 1%;
+
+  display:  none;
+  opacity: 0;
+
+  transition: opacity 500ms;}
+.case_title.active{opacity: 1;}
+
+.case_intro{
+  font-size: 2em;
+  padding-left: 1%; 
+  padding-top: 2%;
+  width: 45%;
+
+  display:  none;
+  opacity: 0;
+
+  transition: opacity 500ms;}
+.case_intro.active{opacity: 1}
+
+.case_content{
+  font-size: 2em;
+  padding-right: 1%; 
+  padding-top: 2%;
+  width: 45%;
+
+  float: right;
+  text-align: right;
+
+  display:  none;
+  opacity: 0;
+
+  transition: opacity 500ms;}
+.case_content.active{opacity: 1}
+
+.full_card.is-flipped .wrapper{transform: rotateY(180deg);}
+
+.front_page, .back_page{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  box-shadow: 1px 1px 25px 3px rgba(0,0,0,.3);
+
+  backface-visibility: hidden;
+  transition: transform 1.2s;
+  transform-style: preserve-3d;
+  perspective: 10000px;}
+
+.back_page{
+  transform: rotateY(180deg);
+}
+.read_more{position: absolute;bottom: 0;left: 0;user-select: none;font-size: 1.4em;}
+
+
+/*******************
+*      HEADER      *
+*******************/
+.header{
+  position: absolute;
+  width: max-content;
+  font-size: calc(var(--page-size) / 18);
+  user-select: none;
+  white-space: nowrap;
+  top: 10%;
+  left: 7%;
+}
+
+.header_home:hover{
+  animation: wave 300ms;
+}
+@keyframes wave{
+  50% {transform: rotate(5deg);}
+}
+
+/*.header_contact{
+  width: 35%;
+}*/
+
+.header::after {
+  content:'';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5%;
+  background: var(--black);
+}
+
+/*******************************
+*           CONTENT            *
+*******************************/
+.content {
+  font-family: 'Sanchez', serif;
+  position: absolute;
+  font-size: calc(var(--page-size) / 45);
+  width: 40%;
+  top: 30%;
+  left: 7%;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 50%;
+  height: 100%;
+  background: url(https://images.unsplash.com/photo-1505356822725-08ad25f3ffe4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80);
+  clip-path: polygon(35% 0%, 100% 0, 100% 100%, 8% 100%); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  pointer-events: none
+}
+
+.phone_contact{
+  background: url(https://www.macworld.co.uk/cmsdata/features/3667924/how-to-fix-iphone-white-screen-of-death-main_thumb1200_4-3.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  
+  width: 46%;
+  height: 69%;
+  
+  position: absolute;
+  right: 0;
+  
+  top: 0;
+  bottom: 0;
+  margin:auto;
+  
+  box-shadow: none;
+  border-radius: 2%;
+}
+
+.icon-container{
+  position: absolute;
+  top: 10%;
+  left: 23%;
+  width: 32%;
+  height:60%;
+  transform: rotate(-8deg);
+  font-size: 1.25em;
+}
+.icon-container img{
+  width: 3vw;
+}
+.icon-container span{
+  transform: translateY(25%) translateX(5%);
+  margin: 0;
+  margin-bottom: 1%;
+}
+
+.helper{
+  position: relative;
+  font-size: 1em;
+  width: 75%;
+
+/*  left: 0;
+  right: 0;
+  margin: auto;*/
+  text-align: center;
+}
+.helper_top{
+  top: 5%;
+  position: absolute;
+}
+.helper_bottom{
+  position: absolute;
+  bottom: 15%;
+}
+.linkedin_frame{
+  display: flex;
+  position: absolute;
+  top: 20%;
+  left: 0;
+}
+.github_frame {
+  display: flex;
+  position: absolute;
+  top: 35%;
+  left: 0;
+}
+.mail_frame {
+  display: flex;
+  position: absolute;
+  top: 55%;
+  left: 0;
+}  
+.mail_frame:active span{
+  transform: translateY(25%) translateX(5%) scale(1.5);
+}
+.flip {
+  position:  absolute;
+  bottom: .5%;
+  right: .25%;
+
+  float: right;
+  width: 100px;
+  height: 100px;
+
+  background: url("flip.svg");
+  transform: scaleX(-1);
+
+  cursor: pointer;
+
+  transition: transform 250ms ease
+}
+.flip:hover{
+  transform: scaleX(-1) scale(1.2);
+}
+
+
+/************************************************************************* 
+*                              MEDIA QUERIES                             *
+**************************************************************************/
+/********************* 
+*     BIG SCREENS    *
+**********************/
+@media screen and (min-width: 1251px) {
+  :root{
+      --page-size: 100vw;
+    }
+  .wrapper{
+    position: relative;
+    overflow: hidden;
+    
+    width: 80vw;
+    margin-left:10%;
+    margin-right:10%;  
+    height: 80vh;
+    margin-top:5%;
+    margin-bottom:5%;  
+    
+    background: #F4F4F4;
+    box-shadow: 1px 1px 25px 3px rgba(0,0,0,.3); 
+  }
+  .header{
+    position: absolute;
+    width: max-content;
+    font-size: calc(var(--page-size) / 20);
+    
+    white-space: nowrap;
+  }  
+  .content {  position: absolute;
+    font-size: calc(var(--page-size) / 50);
+    width: 40%;
+  } 
+  .image {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 50%;
+    height: 100%;
+    background: url(https://images.unsplash.com/photo-1505356822725-08ad25f3ffe4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80);
+    clip-path: polygon(40% 0%, 100% 0, 100% 100%, 10% 100%); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+  }
+
+  .phone_contact{
+    background: url(https://www.macworld.co.uk/cmsdata/features/3667924/how-to-fix-iphone-white-screen-of-death-main_thumb1200_4-3.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    width: 40vw;
+    height: 60vh;
+    
+    position: absolute;
+    right: 0;
+    
+    top: 0;
+    bottom: 0;
+    margin:auto;
+    
+    box-shadow: none;
+    border-radius: 2%;
+  }
+  .icon-container{
+    position: absolute;
+    top: 5%;
+    left: 25%;
+    width: 12vw;
+    height: clamp(350px, 52vh, 380px);
+    transform: rotate(-8deg);
+    font-size: 1.25em;
+  }
+  .icon-container img{
+    width: 4vw;
+  }
+  .icon-container span{
+    transform: translateY(25%) translateX(5%);
+    margin: 0;
+    margin-bottom: 1%;
+  }
+
+  .helper{
+    display: none;
+  }
+
+  .linkedin_frame{
+    display: flex;
+    position: absolute;
+    top: 20%;
+    left: 0;
+  }
+  .github_frame {
+    display: flex;
+    position: absolute;
+    top: 40%;
+    left: 0;
+  }
+  .mail_frame {
+    display: flex;
+    position: absolute;
+    top: 70%;
+    left: 0;
+  }  
+}
+@media screen and (min-width: 1026px) and (max-width: 1250px){
+    :root{
+      --page-size: 100vw;
+    }
+
+  .wrapper{
+    position: relative;
+    overflow: hidden;
+    
+    width: 80vw;
+    margin-left:10%;
+    margin-right:10%;  
+    height: 80vh;
+    margin-top:5%;
+    margin-bottom:5%;  
+    
+    background: #F4F4F4;
+    box-shadow: 1px 1px 25px 3px rgba(0,0,0,.3); 
+  }  
+  .phone_contact{
+    background: url(https://www.macworld.co.uk/cmsdata/features/3667924/how-to-fix-iphone-white-screen-of-death-main_thumb1200_4-3.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    width: 40vw;
+    height: 60vh;
+    
+    position: absolute;
+    right: 0;
+    
+    top: 0;
+    bottom: 0;
+    margin:auto;
+    
+    box-shadow: none;
+    border-radius: 2%;
+  }
+  .icon-container{
+    position: absolute;
+    top: 0;
+    left: 25%;
+    width: 12vw;
+    height: 40vh;
+    transform: rotate(-8deg);
+    font-size: 1.25em;
+  }
+  .icon-container img{
+    width: clamp(2vw, 3vw, 64px);
+  }
+  .icon-container span{
+    transform: translateY(25%) translateX(5%);
+    margin: 0;
+    margin-bottom: 1%;
+  }
+
+  .helper{
+    display: none;
+  }
+
+  .linkedin_frame{
+    display: flex;
+    position: absolute;
+    top: 20%;
+    left: 0;
+  }
+  .github_frame {
+    display: flex;
+    position: absolute;
+    top: 35%;
+    left: 0;
+  }
+  .mail_frame {
+    display: flex;
+    position: absolute;
+    top: 55%;
+    left: 0;
+  }  
+}
+@media screen and (min-width: 769px) and (max-width: 1025px){
+    :root{
+        --page-size: 60em;
+      }
+    .wrapper {
+      position: relative;
+      overflow: hidden;
+      
+      width: 80vw;
+      margin-left:10%;
+      margin-right:10%;
+      margin-top:5%;
+      margin-bottom:5%;  
+      
+      height: 80vh;  
+      background: #F4F4F4;
+      box-shadow: 1px 1px 25px 3px rgba(0,0,0,.3); 
+    }
+    .header_home {
+      font-size: calc(var(--page-size) / 15);
+      top: 5%;
+      left: 7%;
+    }
+    .content {
+      position: absolute;
+      font-size: calc(var(--page-size) / 35);
+      top: 20%;
+      width: 40%;
+    } 
+    .case_study_button {left: 7% }
+    .image {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      width: 50%;
+      height: 100%;
+      background: url(https://images.unsplash.com/photo-1505356822725-08ad25f3ffe4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80);
+      clip-path: polygon(40% 0%, 100% 0, 100% 100%, 10% 100%); 
+      background-size: cover;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+
+
+
+
+    .phone_contact{
+    background: url(https://www.macworld.co.uk/cmsdata/features/3667924/how-to-fix-iphone-white-screen-of-death-main_thumb1200_4-3.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    width: 40vw;
+    height: 60vh;
+    
+    position: absolute;
+    right: 0;
+    
+    top: 0;
+    bottom: 0;
+    margin:auto;
+    
+    box-shadow: none;
+    border-radius: 2%;
+  }
+  .icon-container{
+    position: absolute;
+    top: 0;
+    left: 25%;
+    width: 12vw;
+    height: 40vh;
+    transform: rotate(-8deg);
+    font-size: 1.25em;
+  }
+  .icon-container img{
+    width: clamp(2vw, 3vw, 64px);
+  }
+  .icon-container span{
+    transform: translateY(25%) translateX(5%);
+    margin: 0;
+    margin-bottom: 1%;
+  }
+
+  .helper{
+    display: none;
+  }
+
+  .linkedin_frame{
+    display: flex;
+    position: absolute;
+    top: 20%;
+    left: 0;
+  }
+  .github_frame {
+    display: flex;
+    position: absolute;
+    top: 35%;
+    left: 0;
+  }
+  .mail_frame {
+    display: flex;
+    position: absolute;
+    top: 55%;
+    left: 0;
+  }  
+}
+@media screen and (min-width: 481px) and (max-width: 768px){
+  :root{
+      --page-size: 40em;
+    }
+
+  .wrapper {
+    position: relative;
+    overflow: hidden;
+    
+    width: 80%;
+    margin-left:10%;
+    margin-right:10%;
+    
+
+    height: 99vh;  
+    background: #F4F4F4;
+    box-shadow: 1px 1px 25px 3px rgba(0,0,0,.3); 
+  }
+  .header{
+    font-size: calc(var(--page-size) / 10);
+    top: 5%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    }
+
+  .image {
+    position: absolute;
+    top: 20%;
+    right: 0;
+
+    width: 100%;
+    height: 30%;
+    
+    background: url(https://images.unsplash.com/photo-1505356822725-08ad25f3ffe4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80);
+    clip-path: none;  
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    overflow: hidden;
+    box-shadow: 0px 1px 5px 3px rgba(0,0,0,.3);
+  }
+  .image::after{
+      content:"";
+      width:100%;
+      height:100%;
+      position: absolute;
+      background: rgba(255,255,255,.5);
+    }
+  .content {
+    position: absolute;
+    font-size: calc(var(--page-size) / 28);
+    width: 75%;
+    left:0;
+    right:0;
+    margin: auto;
+  }
+  .content_home{top: 55%}
+  .content_contact{top: 60%}
+  .case_study_button {font-size: 1.5em;}
+
+
+  .phone_contact{
+    background: url(https://www.macworld.co.uk/cmsdata/features/3667924/how-to-fix-iphone-white-screen-of-death-main_thumb1200_4-3.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    width: 60vw;
+    height: 40vh;
+    
+    position: absolute;
+    top: -20vh;
+    left:  0;
+    right: 0;
+    margin: auto;
+    
+    
+    box-shadow: none;
+    border-radius: 2%;
+  }
+  .icon-container{
+    position: absolute;
+    top: 0;
+    left: 25%;
+    width: 12vw;
+    height: 40vh;
+    transform: rotate(-8deg);
+    font-size: 1.25em;
+  }
+  .icon-container img{
+    width: 4vw;
+  }
+  .icon-container span{
+    transform: translateY(25%) translateX(5%);
+    margin: 0;
+    margin-bottom: 1%;
+  }
+
+  .helper{
+    display: none;
+  }
+
+  .linkedin_frame{
+    display: flex;
+    position: absolute;
+    top: 20%;
+    left: 0;
+  }
+  .github_frame {
+    display: flex;
+    position: absolute;
+    top: 35%;
+    left: 0;
+  }
+  .mail_frame {
+    display: flex;
+    position: absolute;
+    top: 55%;
+    left: 0;
+  }  
+}  
+@media screen and (min-width: 481px) and (max-width: 550px){
+  :root{
+      --page-size: 40em;
+    }
+
+  .wrapper {
+    position: relative;
+    overflow: hidden;
+    
+    width: 80%;
+    margin-left:10%;
+    margin-right:10%;
+    
+    height: 99vh;  
+    background: #F4F4F4;
+    box-shadow: 1px 1px 25px 3px rgba(0,0,0,.3); 
+  }
+  .header_home {
+    font-size: calc(var(--page-size) / 14);
+    top: 15%;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  .image {
+    position: absolute;
+    top: 30%;
+    right: 0;
+
+    width: 100%;
+    height: 30%;
+    
+    background: url(https://images.unsplash.com/photo-1505356822725-08ad25f3ffe4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80);
+    clip-path: none;  
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    overflow: hidden;
+    box-shadow: 0px 1px 5px 3px rgba(0,0,0,.3);
+
+    z-index: 1;
+
+  }
+  .image::after{
+      content:"";
+      width:100%;
+      height:100%;
+      position: absolute;
+      background: rgba(255,255,255,.8);
+    }
+  .content {
+    position: absolute;
+    font-size: calc(var(--page-size) / 35);
+    width: 75%;
+    left:0;
+    right:0;
+    margin: auto;
+
+    z-index: 2;
+  }
+  .content_home{top: 35%;}  
+  .content_contact{font-size: 1.6em}
+
+  .case_study_button {left: 7.5%;bottom: 20%;font-size: 2em;}
+}
+@media screen and (max-width: 480px){
+  :root{
+      --page-size: 50em;
+    }
+
+  .wrapper {
+    position: relative;
+    overflow: hidden;
+    
+    width: 80%;
+    margin-left:10%;
+    margin-right:10%;
+    
+    height: 99vh;  
+    background: #F4F4F4;
+    box-shadow: 1px 1px 25px 3px rgba(0,0,0,.3); 
+  }
+  .header {
+    font-size: calc(var(--page-size) / 14);
+    top: 15%;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  .image {
+    display: none;
+  }
+  .content {
+    position: absolute;
+    font-size: calc(var(--page-size) / 35);
+    width: 75%;
+    
+    top: 35%;
+    
+    left:0;
+    right:0;
+    margin: auto;
+
+    z-index: 1;
+  }  
+  .content_contact{text-align: center;}
+  .flip{z-index: 2;}
+
+
+
+  .phone_contact{
+      background: none;
+      
+      width: 60vw;
+      height: 40vh;
+      
+      position: absolute;
+      top: -20vh;
+      left: 30%;
+      right: 0;
+      margin: auto;
+      
+      
+      box-shadow: none;
+      border-radius: 2%;
+  }
+  .icon-container{
+    position: absolute;
+    top: 75%;
+    left: 0;
+    width: 20vw;
+    height: 30vh;
+    transform: rotate(0);
+    font-size: 1.5em;
+  }
+  .icon-container img{
+    width: 10vw;
+  }
+  .icon-container span{
+    transform: translateY(25%) translateX(5%);
+    margin: 0;
+    margin-bottom: 1%;
+  }
+
+  .helper{
+    display: none;
+  }
+
+  .linkedin_frame{
+    display: flex;
+    position: absolute;
+    top: 20%;
+    left: 0;
+  }
+  .github_frame {
+    display: flex;
+    position: absolute;
+    top: 40%;
+    left: 0;
+  }
+  .mail_frame {
+    display: flex;
+    position: absolute;
+    top: 60%;
+    left: 0;
+  }  
+}
